@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoParts TN - Documentation Technique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --text-dim: #94a3b8;
+            --accent: #f43f5e;
+            --border: #334155;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; color: black !important; padding: 0 !important; }
+            .container { max-width: 100% !important; box-shadow: none !important; margin: 0 !important; }
+            h1, h2, h3 { color: #1e293b !important; }
+            table { border-collapse: collapse; width: 100%; }
+            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; color: black !important; }
+            .card { border: 1px solid #ddd; break-inside: avoid; }
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin: 0;
+            background: linear-gradient(to right, #818cf8, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 50px;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--text-dim);
+            font-size: 1.3rem;
+            margin-top: 30px;
+        }
+
+        .btn-print {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .btn-print:hover {
+            transform: translateY(-2px);
+            background: var(--primary-dark);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--border);
+            text-align: left;
+            padding: 15px;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mermaid {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 30px 0;
+        }
+
+        .agile-section {
+            display: grid;
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn-print no-print" onclick="window.print()">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+        Exporter en PDF
+    </button>
+
+    <div class="container">
+        <header>
+            <h1>AutoParts TN</h1>
+            <p style="color: var(--text-dim); margin-top: 10px;">Dossier de Présentation Technique & Agile</p>
+        </header>
+
+        <section>
+            <h2>1. Fiche Technique</h2>
+            <table>
+                <thead>
+                    <tr><th>Composant</th><th>Technologie</th><th>Version</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Backend</td><td>Java / Spring Boot</td><td>3.2.5 (Java 21)</td></tr>
+                    <tr><td>Frontend</td><td>Flutter</td><td>3.24+</td></tr>
+                    <tr><td>Base de Données</td><td>PostgreSQL</td><td>13+</td></tr>
+                    <tr><td>Sécurité</td><td>Spring Security + JWT</td><td>Auth stateless</td></tr>
+                    <tr><td>Gestion d'État</td><td>Riverpod</td><td>State Notifier</td></tr>
+                    <tr><td>Réseau</td><td>Dio / Axios Style</td><td>Retry & Interceptors</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>2. Architecture & Design</h2>
+            <p>Le système utilise une architecture N-Tier où le client mobile/web communique avec un micro-service central via un tunnel sécurisé SSL/TLS.</p>
+            <div class="card">
+                <strong>Stratégie de Cache :</strong> Mise en œuvre d'un cache au niveau de la couche Service (BE) et persistance locale (Secure Storage) au niveau du Frontend.
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Diagrammes UML</h2>
+            
+            <h3>3.1 Diagramme de Classe</h3>
+            <div class="mermaid">
+                classDiagram
+                    class User { +String email, +Role role }
+                    class Product { +String name, +Double price, +Integer stock }
+                    class Order { +Date date, +Double total, +Status status }
+                    User "1" -- "*" Order
+                    Order "1" -- "*" Product
+            </div>
+
+            <h3>3.2 Schéma Entité-Association (ERD)</h3>
+            <div class="mermaid">
+                erDiagram
+                    USERS ||--o{ ORDERS : places
+                    ORDERS ||--|{ ORDER_ITEMS : contains
+                    PRODUCTS ||--o{ ORDER_ITEMS : includes
+                    CATEGORIES ||--o{ PRODUCTS : tags
+            </div>
+
+            <h3>3.3 Flux de Séquence (Commande)</h3>
+            <div class="mermaid">
+                sequenceDiagram
+                    Client->>API: POST /login (Auth)
+                    API-->>Client: JWT Token
+                    Client->>API: POST /orders (Authorized)
+                    API->>DB: Transaction Start
+                    DB-->>API: Success
+                    API-->>Client: 201 Created
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Planification Agile</h2>
+            <h3>4.1 Product Backlog Priorisé</h3>
+            <table>
+                <thead>
+                    <tr><th>Feature</th><th>Priorité</th><th>Estimation (Story Points)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Authentification JWT</td><td>Critique</td><td>5</td></tr>
+                    <tr><td>Gestion Inventaire</td><td>Haute</td><td>8</td></tr>
+                    <tr><td>Panier & Paiement</td><td>Haute</td><td>13</td></tr>
+                    <tr><td>Dashboard Revenue</td><td>Moyenne</td><td>5</td></tr>
+                    <tr><td>Demande de Devis</td><td>Moyenne</td><td>3</td></tr>
+                </tbody>
+            </table>
+
+            <h3>4.2 Roadmap des Sprints (5 Sprints)</h3>
+            <div class="agile-section">
+                <div class="card"><strong>Sprint 1 :</strong> Architecture Backend & Auth (JWT)</div>
+                <div class="card"><strong>Sprint 2 :</strong> Catalogue Dynamique & Media Management</div>
+                <div class="card"><strong>Sprint 3 :</strong> Tunnel de Commande & Logique Métier</div>
+                <div class="card"><strong>Sprint 4 :</strong> Interface Admin & BI (Statistics)</div>
+                <div class="card"><strong>Sprint 5 :</strong> Optimisations, Devis & Déploiement</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 AutoParts TN - Généré automatiquement par Antigravity Assistant</p>
+        </footer>
+    </div>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+</body>
+</html>

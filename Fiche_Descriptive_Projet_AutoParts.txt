@@ -1,0 +1,63 @@
+================================================================================
+          FICHE DESCRIPTIVE : APPLICATION FULL-STACK "AUTOPARTS TN"
+================================================================================
+
+1. PRÉSENTATION DU PROJET
+-------------------------
+AutoParts TN est une solution Full-Stack complète pour la vente et la gestion 
+de pièces de rechange automobiles. L'application offre une expérience fluide 
+séparée en deux interfaces distinctes : un portail Client (E-commerce) et un 
+Portail Administrateur (Gestion de stock & BI).
+
+2. ÉTAPES CHRONOLOGIQUES DU DÉVELOPPEMENT
+-----------------------------------------
+Le projet a été mené selon une approche itérative (Agile) :
+- Étape 1 : Conception de la base de données PostgreSQL et structure des entités.
+- Étape 2 : Développement du Backend Spring Boot (API REST) et sécurisation JWT.
+- Étape 3 : Création du Frontend Flutter (Structure des dossiers & State Management).
+- Étape 4 : Intégration et résolution des conflits réseaux (Migration vers le 
+           Port 8081 pour éviter les conflits avec les serveurs Web locaux).
+- Étape 5 : Automatisation du seeding (Initialisation de l'Admin via DataInitializer).
+- Étape 6 : Tests bout-en-bout (Authentification -> Commande -> Dashboard).
+
+3. FONCTIONNEMENT DE L'APPLICATION
+----------------------------------
+- Côté Client : L'utilisateur peut parcourir le catalogue en temps réel, 
+  rechercher des pièces, gérer son panier et passer des commandes. Les pièces 
+  rares font l'objet d'une demande de devis spécifique.
+- Côté Administrateur : Un tableau de bord dynamique affiche les revenus et 
+  les ruptures de stock. L'admin possède le contrôle total sur l'inventaire 
+  (CRUD Produits) et la validation des commandes clients.
+
+4. SÉCURITÉ & AUTHENTIFICATION
+------------------------------
+Le socle de sécurité repose sur Spring Security et les JSON Web Tokens (JWT) :
+- Stateless : Le serveur ne stocke pas de sessions, chaque requête est vérifiée 
+  via un Token stocké de manière sécurisée sur le mobile/navigateur.
+- Role-Based Access Control (RBAC) : Les accès sont strictement séparés au niveau 
+  du Backend. Un client ne peut techniquement pas accéder aux routes de 
+  statistiques ou de modification de stock.
+- Password Hashing : Les mots de passe sont hashés avec BCrypt avant d'être 
+  enregistrés dans PostgreSQL.
+
+5. JUSTIFICATION DES CHOIX TECHNIQUES
+-------------------------------------
+- Flutter (Frontend) : Choix de la performance native et du multi-plateforme 
+  (Web/Android/Windows). L'UI est riche, animée et responsive.
+- Spring Boot (Backend) : Pour sa robustesse, sa gestion native de la sécurité 
+  et sa rapidité de traitement des transactions lourdes.
+- PostgreSQL : Base de données relationnelle préférée en entreprise pour sa 
+  consistance (ACID) et sa puissance de traitement de données structurées.
+- Riverpod (Flutter) : Utilisé pour une gestion d'état réactive et testable, 
+  assurant que l'interface se met à jour instantanément lors d'un achat.
+
+6. ARCHITECTURE LOGICIELLE
+--------------------------
+L'application suit une architecture N-Tier (en couches) :
+- Couche Présentation (Flutter) : Découpée selon les principes de la "Clean Architecture".
+- Couche Service (Spring Boot) : Contient toute la logique métier complexe.
+- Couche Accès Données (Spring Data JPA) : Simplifie et sécurise les échanges SQL.
+
+Cette séparation garantit que l'application est évolutive (scalability) et 
+facile à maintenir sur le long terme.
+================================================================================
